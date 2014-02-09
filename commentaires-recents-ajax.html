@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js' type='text/javascript'></script>
+	</head>
+	<body>
+		<div id = "coms2"></div>
+		<script type='text/javascript'>
+			// <![CDATA[
+			 // adresse du flux de commentaires
+			var linkfeed = 'http://iv-oam.blogspot.com/feeds/comments/default' ;
+			lirexml(linkfeed); // lancement fonction recherche des commentaires
+			
+			function lirexml(linkfeedb){
+				var url = linkfeedb;
+				$.ajax({
+					url: url,
+					type: 'GET',
+					dataType: 'jsonp',
+					success : function(data) {
+						var nbr = 0;
+						var $items = $(data).find('entry');
+						$items.each(  // parcours des commentaires
+							function() {
+								nbr++;
+								if (nbr < 20){ // limite nombre de commentaires
+									var $item = $(this);
+									$item.find("link").each(function(){
+										if ($(this).attr('rel') == 'alternate') {
+											lien = $(this).attr('href');
+										}
+									});
+									// auteur du commentaire
+									var auteur = $item.children('author').children('name').text(); 
+									if (auteur == 'Anonymous'){auteur = 'Anonyme';}
+									var titre = $item.children('title').text();
+									$('#coms2').append('<li><a href = "' + lien + '" >' + auteur + " : " + titre + '</a></li>');
+								}
+							}
+						);
+					}
+				}); // ajax
+			} // lirexml
+			// ]]>
+		</script>
+	</body>
+</html>
