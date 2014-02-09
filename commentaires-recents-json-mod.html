@@ -34,45 +34,31 @@
 			var i_rc=g_rc.substring(5,7); //mois
 			var j_rc=g_rc.substring(8,10); //jour
 
-			if("content" in b_rc){ // contenu commentaire
-				var l_rc=b_rc.content.$t;
-			}
-			else if("summary" in b_rc){
-				var l_rc=b_rc.summary.$t;
-			}
-			else {
-				var l_rc="";
-			}
+			if("content" in b_rc){var l_rc=b_rc.content.$t;}
+			else if("summary" in b_rc){var l_rc=b_rc.summary.$t;}
+			else {var l_rc="";}
 
 			var re=/<\S[^>]*>/g;
 			l_rc = l_rc.replace(re,"");
-
-			document.write('<div class="rcw-comments">');
-
+			document.write('<li class="rcw-comments">');
 			if(m_rc==true)document.write(j_rc + '/' + i_rc + '/' + h_rc + ' : ');
-
 			document.write('<a href="'+c_rc+'">'+b_rc.author[0].name.$t+'</a> a commenté');
 
-			if(n_rc == true) {
-				document.write(' ' + f_rc);
-			}
-
-			if (o_rc == 0){
-				document.write('</div>');
-			}
+			if(n_rc == true) {document.write(' ' + f_rc);}
+			if (o_rc == 0){document.write('</li>');}
 			else {
 				document.write(' : ');
 				if(l_rc.length<o_rc){
 					document.write('<q>');
 					document.write(l_rc);
-					document.write('</q></div>');
+					document.write('</q></li>');
 				}
 				else {
 					document.write('<q>');
 					l_rc = l_rc.substring(0,o_rc);
 					var p_rc = l_rc.lastIndexOf(" ");
 					l_rc=l_rc.substring(0,p_rc);
-					document.write(l_rc+'&hellip;</q></div>');
+					document.write(l_rc+'&hellip;</q></li>');
 					document.write('');
 				}
 			}
@@ -80,11 +66,12 @@
 	}
 </script>
 
+<!--ATTENTION : changer l'adresse du blog et uniquement l'adresse (laisser après "/feeds/comments/default...") -->
 <script src="http://iv-oam.blogspot.com/feeds/comments/default?alt=json-in-script&callback=showrecentcomments"></script>
 
-<div id="rcdr">
+<div>
+	<ul id="rcdr">
 
+	</ul>
 </div>
-
 <noscript>Votre navigateur ne supporte pas le javascript</noscript>
-
