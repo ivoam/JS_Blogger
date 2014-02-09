@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<title>Derniers commentaires du blog</title>
+		<meta content='text/html; charset=utf-8' http-equiv='Content-Type'/>
 		<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js' type='text/javascript'></script>
 	</head>
 	<body>
-		<div id = "coms2"></div>
+		<div id="coms2"></div>
 		<script type='text/javascript'>
 			// <![CDATA[
 			 // adresse du flux de commentaires
@@ -12,8 +14,9 @@
 			lirexml(linkfeed); // lancement fonction recherche des commentaires
 			
 			function lirexml(linkfeedb){
+				// linkfeedb : flux RSS commentaires
 				var url = linkfeedb;
-				$.ajax({
+				$.ajax({ // ajax
 					url: url,
 					type: 'GET',
 					dataType: 'jsonp',
@@ -39,8 +42,8 @@
 							}
 						);
 					}
-				}); // ajax
-			} // lirexml
+				}); 
+			}
 			// ]]>
 		</script>
 	</body>
