@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<title>Derniers commentaires du blog</title>
 		<meta content='text/html; charset=utf-8' http-equiv='Content-Type'/>
 	</head>
 	<body>
-		<div id = "coms2"></div>
 		<script type='text/javascript'>
-			//Tomato Project
+			// SOURCE : Tomato Project - http://www.madtomatoe.com - 
+			// traductions en français, modifications balises HTML
 			function showrecentcomments(json){
 				var a_rc = 5; // nombre de commentaires
 				var m_rc = true; // afficher les dates
@@ -85,19 +86,13 @@
 			}
 		</script>
 
-		<script src=http://iv-oam.blogspot.com/feeds/comments/default?alt=json-in-script&callback=showrecentcomments ></script>
+		<script src="http://iv-oam.blogspot.com/feeds/comments/default?alt=json-in-script&callback=showrecentcomments">
+		</script>
 
 		<div id="rcdr">
 
 		</div>
 		
 		<noscript>Votre navigateur ne supporte pas le javascript</noscript>
-
-		<style type=text/css>  
-			
-			.rcw-comments {border-bottom: 1px #cccccc dotted; padding-top: 7px!important; padding-bottom: 7px!important;}
-			#rcdr {padding: 1px 0px 0px 19px; height:14px; margin: 5px 0px 0px 0px;line-height:14px;}
-			#rcdr, #rcdr a {color:#808080;} 
-		</style>
 	</body>
 </html>
