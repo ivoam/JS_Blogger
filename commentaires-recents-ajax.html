@@ -14,6 +14,7 @@
 			lirexml(linkfeed); // lancement fonction recherche des commentaires
 			
 			function lirexml(linkfeedb){
+				nbcom = 20;
 				// linkfeedb : flux RSS commentaires
 				var url = linkfeedb;
 				$.ajax({ // ajax
@@ -26,7 +27,7 @@
 						$items.each(  // parcours des commentaires
 							function() {
 								nbr++;
-								if (nbr < 20){ // limite nombre de commentaires
+								if (nbr <= nbcom){ // limite nombre de commentaires
 									var $item = $(this);
 									$item.find("link").each(function(){
 										if ($(this).attr('rel') == 'alternate') {
